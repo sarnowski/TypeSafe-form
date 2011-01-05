@@ -145,11 +145,13 @@ class FormFieldBuilder {
     public function globalMessages() {
         $messages = $this->formReport->getGlobalMessages();
 
-        echo '<ul class="messages">';
-        foreach ($messages as $message) {
-            echo '<li>'.$message.'</li>';
+        if (!empty($messages)) {
+            echo '<ul class="messages">';
+            foreach ($messages as $message) {
+                echo '<li>'.$message.'</li>';
+            }
+            echo '</ul>';
         }
-        echo '</ul>';
 
         return $this;
     }
