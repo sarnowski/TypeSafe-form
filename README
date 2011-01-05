@@ -1,0 +1,10 @@
+TypeSafe-form
+================================================================================
+
+A formular helper which can restore and validate formulars.
+
+
+Module to install:
+--------------------------------------------------------------------------------
+TypeSafe/form/FormModule.php
+

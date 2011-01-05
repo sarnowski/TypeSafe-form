@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.sarnowski</groupId>
+        <artifactId>php-parent</artifactId>
+        <version>0.2.1</version>
+    </parent>
+
+    <groupId>com.github.sarnowski</groupId>
+    <artifactId>TypeSafe-form</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <name>TypeSafe-form</name>
+
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <id>sarnowski</id>
+            <name>Tobias Sarnowski</name>
+            <email>sarnowski@new-thoughts.org</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/sarnowski/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:sarnowski/${project.artifactId}.git</developerConnection>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sarnowski</groupId>
+            <artifactId>TypeSafe</artifactId>
+            <version>[0.3,2)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sarnowski</groupId>
+            <artifactId>TypeSafe-validation</artifactId>
+            <version>[0.1,2)</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>sarnowski.github.com</id>
+            <name>Tobias Sarnowski's Maven Repository</name>
+            <url>http://sarnowski.github.com/repository</url>
+        </repository>
+    </repositories>
+
+</project>
