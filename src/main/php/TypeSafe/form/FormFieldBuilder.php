@@ -35,6 +35,7 @@ class FormFieldBuilder {
     /**
      * @param string $name
      * @param string $type
+     * @param array $attr additional html attributes
      * @return FormFieldBuilder
      */
     public function field($name, $type = 'text', $attr = array()) {
@@ -72,10 +73,7 @@ class FormFieldBuilder {
         $attr = array_merge($default, $attr);
 
         // build attributes
-        $attrStr = "";
-        foreach ($attr as $key => $value) {
-            $attrStr .=  ' ' . $key . '="' . trim(str_replace('"', '\"', $value)) . '"';
-        }
+        $attrStr = $this->prepareAttributes($attr);
 
         // generate
         switch($type) {
@@ -98,14 +96,17 @@ class FormFieldBuilder {
     /**
      * @param string $name
      * @param string $label
+     * @param array $attr additional html attributes
      * @return FormFieldBuilder
      */
-    public function label($name, $label = null) {
+    public function label($name, $label = null, $attr = array()) {
         if ($label == null) {
             $label = $name;
         }
-        
-        echo '<label for="'.$name.'">'.$label.'</label>';
+
+        $attr = $this->prepareAttributes($attr);
+
+        echo '<label for="'.$name.'"'.$attr.'>'.$label.'</label>';
 
         return $this;
     }
@@ -142,11 +143,19 @@ class FormFieldBuilder {
         return $this;
     }
 
-    public function globalMessages() {
+    /**
+     * @param array $attr additional html attributes
+     * @return FormFieldBuilder
+     */
+    public function globalMessages($attr = array()) {
         $messages = $this->formReport->getGlobalMessages();
 
+        if (isset($attr['class'])) $attr['class'] .= ' messages';
+        else $attr['class'] = 'messages';
+        $attr = $this->prepareAttributes($attr);
+
         if (!empty($messages)) {
-            echo '<ul class="messages">';
+            echo "<ul $attr>";
             foreach ($messages as $message) {
                 echo '<li>'.$message.'</li>';
             }
@@ -161,5 +170,21 @@ class FormFieldBuilder {
      */
     public function close($submit = true) {
         echo '</form>';
+    }
+
+    /**
+     * Prepare a key-value attribute array. the keys and values will be escaped.
+     *
+     * @param array $attr key-value attribute array
+     * @return string
+     */
+    private function prepareAttributes($attr = array()) {
+        if (empty($attr)) return '';
+
+        $attrString = '';
+        foreach ($attr as $name => $value) {
+            $attrString .= sprintf(' %s="%s"', htmlspecialchars($name), htmlspecialchars($value));
+        }
+        return $attrString;
     }
 }
