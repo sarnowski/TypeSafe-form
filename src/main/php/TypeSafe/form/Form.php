@@ -56,7 +56,7 @@ abstract class Form {
 
         foreach($data as $key => $value) {
             if (isset($requiredFields[$key])) {
-                if (empty($value)) {
+                if (empty($value) && $value !== "0") {
                     $messages[$key] = array('message' => 'Field is required.', 'value' => $value);
                     continue;
                 } else {
