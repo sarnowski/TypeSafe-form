@@ -137,8 +137,26 @@ class FormFieldBuilder {
         return $this->field(Form::$SUBMIT_NAME, 'submit', $attr);
     }
 
+    /**
+     * Direct output the (HTML-)string
+     * @param string $string the string to output - no processing will happen
+     * @return FormFieldBuilder
+     */
     public function html($string) {
         echo $string;
+
+        return $this;
+    }
+
+    /**
+     * Write a html string - string will only show on if global messages are present
+     * @param string $string html code string
+     * @return FormFieldBuilder
+     */
+    public function globalMessagesHtml($string) {
+        $messages = $this->formReport->getGlobalMessages();
+        if (!empty($messages))
+            $this->html($string);
 
         return $this;
     }
