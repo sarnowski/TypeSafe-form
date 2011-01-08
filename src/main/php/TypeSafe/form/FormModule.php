@@ -23,6 +23,6 @@ require_once('FormServiceImpl.php');
 
 class FormModule extends ServletModule {
     public function configuration() {
-        $this->bind('FormService')->to('FormServiceImpl')->inRequestScope();
+        $this->bind('FormService')->to('FormServiceImpl');
     }
 }
