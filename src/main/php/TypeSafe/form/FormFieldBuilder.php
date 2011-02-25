@@ -141,6 +141,10 @@ class FormFieldBuilder {
         return $this->field(Form::$SUBMIT_NAME, 'submit', $attr);
     }
 
+    /**
+     * @param string $string
+     * @return FormFieldBuilder
+     */
     public function html($string) {
         echo $string;
 
@@ -170,9 +174,11 @@ class FormFieldBuilder {
     }
 
     /**
+     * @param boolean $submit
      * @return void
      */
     public function close($submit = true) {
+        if ($submit) $this->submit(Form::$SUBMIT_VALUE);
         echo '</form>';
     }
 

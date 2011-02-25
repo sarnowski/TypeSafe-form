@@ -23,6 +23,7 @@ abstract class Form {
     // unset them below
     public static $FORM_NAME = '_formName';
     public static $SUBMIT_NAME = '_submitButton';
+    public static $SUBMIT_VALUE = 'submit';
 
     /**
      * @param array $data
