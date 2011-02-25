@@ -66,7 +66,8 @@ class FormFieldBuilder {
 
         }
 
-        if ($type == 'password') {
+        if ($type == 'password' || $type == 'textarea') {
+            $value = $default['value']; //persevering value for later access
             unset($default['value']);
         }
 
@@ -82,6 +83,9 @@ class FormFieldBuilder {
                 echo '<input type="submit"'.$attrStr.' />';
                 break;
 
+            case 'textarea':
+                echo '<textarea'.$attrStr.'>'.$value.'</textarea>';
+                break;
 
             case 'password':
             case 'input':
@@ -155,7 +159,7 @@ class FormFieldBuilder {
         $attr = $this->prepareAttributes($attr);
 
         if (!empty($messages)) {
-            echo "<ul $attr>";
+            echo '<ul '.$attr.'>';
             foreach ($messages as $message) {
                 echo '<li>'.$message.'</li>';
             }
