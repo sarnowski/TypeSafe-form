@@ -138,7 +138,7 @@ class FormFieldBuilder {
     public function submit($value, $attr = array()) {
         $attr['value'] = $value;
 
-        return $this->field(Form::$SUBMIT_NAME, 'submit', $attr);
+        return $this->field($value, 'submit', $attr);
     }
 
     /**
